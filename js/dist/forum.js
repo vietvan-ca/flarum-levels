@@ -193,7 +193,7 @@ var EditLevelModal = /*#__PURE__*/function (_Modal) {
       color: this.color(),
       icon: this.icon(),
       is_special: this.isSpecial(),
-      display_order: parseInt(this.displayOrder())
+      order: parseInt(this.displayOrder())
     };
     var url = this.attrs.level ? flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().forum.attribute('apiUrl') + "/levels/" + this.attrs.level.id : flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().forum.attribute('apiUrl') + "/levels";
     var method = this.attrs.level ? 'PATCH' : 'POST';
@@ -486,10 +486,7 @@ var LevelListItem = /*#__PURE__*/function (_Component) {
     }, m("td", {
       className: "LevelListItem-name"
     }, m("span", {
-      className: "LevelName",
-      style: level.attributes.color ? {
-        color: level.attributes.color
-      } : {}
+      className: "LevelName"
     }, level.attributes.name)), m("td", {
       className: "LevelListItem-xp"
     }, level.attributes.xp_required), m("td", {
@@ -506,7 +503,7 @@ var LevelListItem = /*#__PURE__*/function (_Component) {
       title: flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.special_level')
     }) : '—'), m("td", {
       className: "LevelListItem-order"
-    }, level.attributes.display_order), m("td", {
+    }, level.attributes.order), m("td", {
       className: "LevelListItem-actions"
     }, m((flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_3___default()), {
       className: "Button Button--icon",
@@ -523,129 +520,6 @@ var LevelListItem = /*#__PURE__*/function (_Component) {
     })));
   };
   return LevelListItem;
-}((flarum_common_Component__WEBPACK_IMPORTED_MODULE_2___default()));
-
-
-/***/ }),
-
-/***/ "./src/admin/components/LevelsManagerSettingComponent.js":
-/*!***************************************************************!*\
-  !*** ./src/admin/components/LevelsManagerSettingComponent.js ***!
-  \***************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ LevelsManagerSettingComponent)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
-/* harmony import */ var flarum_admin_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flarum/admin/app */ "flarum/admin/app");
-/* harmony import */ var flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flarum_admin_app__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var flarum_common_Component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flarum/common/Component */ "flarum/common/Component");
-/* harmony import */ var flarum_common_Component__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flarum_common_Component__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! flarum/common/components/Button */ "flarum/common/components/Button");
-/* harmony import */ var flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! flarum/common/components/LoadingIndicator */ "flarum/common/components/LoadingIndicator");
-/* harmony import */ var flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _LevelListItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LevelListItem */ "./src/admin/components/LevelListItem.js");
-/* harmony import */ var _EditLevelModal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./EditLevelModal */ "./src/admin/components/EditLevelModal.js");
-
-
-
-
-
-
-
-var LevelsManagerSettingComponent = /*#__PURE__*/function (_Component) {
-  function LevelsManagerSettingComponent() {
-    return _Component.apply(this, arguments) || this;
-  }
-  (0,_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(LevelsManagerSettingComponent, _Component);
-  var _proto = LevelsManagerSettingComponent.prototype;
-  _proto.oninit = function oninit(vnode) {
-    _Component.prototype.oninit.call(this, vnode);
-    this.loading = true;
-    this.levels = [];
-    this.loadLevels();
-  };
-  _proto.loadLevels = function loadLevels() {
-    var _this = this;
-    flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().request({
-      method: 'GET',
-      url: flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().forum.attribute('apiUrl') + '/levels'
-    }).then(function (result) {
-      _this.levels = result.data || [];
-      _this.loading = false;
-      m.redraw();
-    })["catch"](function (e) {
-      _this.loading = false;
-      m.redraw();
-      console.error('Error loading levels:', e);
-    });
-  };
-  _proto.view = function view() {
-    var _this2 = this;
-    return m("div", {
-      className: "LevelsManagerSetting"
-    }, m("div", {
-      className: "LevelsManagerSetting-header"
-    }, m("p", {
-      className: "LevelsManagerSetting-helpText"
-    }, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.help_text')), m((flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_3___default()), {
-      className: "Button Button--primary",
-      icon: "fas fa-plus",
-      onclick: function onclick() {
-        return _this2.addLevel();
-      }
-    }, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.add'))), this.loading ? m((flarum_common_components_LoadingIndicator__WEBPACK_IMPORTED_MODULE_4___default()), null) : m("div", {
-      className: "LevelList"
-    }, this.levels.length === 0 ? m("div", {
-      className: "LevelList-empty"
-    }, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.empty')) : m("table", {
-      className: "LevelTable"
-    }, m("thead", null, m("tr", null, m("th", null, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.name')), m("th", null, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.xp_required')), m("th", null, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.color')), m("th", null, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.special')), m("th", null, flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.order')), m("th", null))), m("tbody", null, this.levels.map(function (level) {
-      return m(_LevelListItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        level: level,
-        onEdit: _this2.editLevel.bind(_this2),
-        onDelete: _this2.deleteLevel.bind(_this2)
-      });
-    })))));
-  }
-
-  // The addLevel, editLevel, and deleteLevel methods are the same as in LevelsPage
-  ;
-  _proto.addLevel = function addLevel() {
-    var _this3 = this;
-    flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().modal.show(_EditLevelModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      onSaved: function onSaved() {
-        return _this3.loadLevels();
-      }
-    });
-  };
-  _proto.editLevel = function editLevel(level) {
-    var _this4 = this;
-    flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().modal.show(_EditLevelModal__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      level: level,
-      onSaved: function onSaved() {
-        return _this4.loadLevels();
-      }
-    });
-  };
-  _proto.deleteLevel = function deleteLevel(level) {
-    var _this5 = this;
-    if (confirm(flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().translator.trans('vietvan-ca-flarum-levels.admin.levels.delete_confirmation'))) {
-      flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().request({
-        method: 'DELETE',
-        url: flarum_admin_app__WEBPACK_IMPORTED_MODULE_1___default().forum.attribute('apiUrl') + '/levels/' + level.id
-      }).then(function () {
-        _this5.loadLevels();
-      })["catch"](function (e) {
-        console.error('Error deleting level:', e);
-      });
-    }
-  };
-  return LevelsManagerSettingComponent;
 }((flarum_common_Component__WEBPACK_IMPORTED_MODULE_2___default()));
 
 
@@ -799,8 +673,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_admin_components_UserListPage__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_admin_components_UserListPage__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flarum/common/components/Button */ "flarum/common/components/Button");
 /* harmony import */ var flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_common_components_Button__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_LevelsManagerSettingComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/LevelsManagerSettingComponent */ "./src/admin/components/LevelsManagerSettingComponent.js");
-
 
 
 
@@ -818,17 +690,7 @@ flarum_admin_app__WEBPACK_IMPORTED_MODULE_0___default().initializers.add('vietva
       return fallback;
     }
   }
-  flarum_admin_app__WEBPACK_IMPORTED_MODULE_0___default().extensionData["for"]('vietvan-ca-levels').registerPage(_components_LevelsPage__WEBPACK_IMPORTED_MODULE_1__["default"]).registerSetting({
-    setting: 'vietvan-ca-flarum-levels.xp_per_post',
-    type: 'number',
-    label: safeTrans('vietvan-ca-flarum-levels.admin.settings.xp_per_post', 'XP per post'),
-    "default": 10
-  }).registerSetting({
-    setting: 'vietvan-ca-flarum-levels.xp_per_discussion',
-    type: 'number',
-    label: safeTrans('vietvan-ca-flarum-levels.admin.settings.xp_per_discussion', 'XP per discussion'),
-    "default": 20
-  }).registerPermission({
+  flarum_admin_app__WEBPACK_IMPORTED_MODULE_0___default().extensionData["for"]('vietvan-ca-levels').registerPage(_components_LevelsPage__WEBPACK_IMPORTED_MODULE_1__["default"]).registerPermission({
     icon: 'fas fa-chart-line',
     label: flarum_admin_app__WEBPACK_IMPORTED_MODULE_0___default().translator.trans('vietvan-ca-flarum-levels.admin.permissions.view_levels'),
     permission: 'vietvan-ca-flarum-levels.view'

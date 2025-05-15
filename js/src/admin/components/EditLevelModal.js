@@ -133,7 +133,7 @@ export default class EditLevelModal extends Modal {
       color: this.color(),
       icon: this.icon(),
       is_special: this.isSpecial(),
-      display_order: parseInt(this.displayOrder())
+      order: parseInt(this.displayOrder())
     };
     
     const url = this.attrs.level ? 

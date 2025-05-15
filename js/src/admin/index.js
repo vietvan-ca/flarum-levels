@@ -4,7 +4,6 @@ import EditUserLevelModal from './components/EditUserLevelModal';
 import { extend } from 'flarum/common/extend';
 import UserListPage from 'flarum/admin/components/UserListPage';
 import Button from 'flarum/common/components/Button';
-import LevelsManagerSettingComponent from './components/LevelsManagerSettingComponent';
 
 
 app.initializers.add('vietvan-ca-levels', () => {
@@ -22,18 +21,6 @@ app.initializers.add('vietvan-ca-levels', () => {
   app.extensionData
     .for('vietvan-ca-levels')
     .registerPage(LevelsPage)
-    .registerSetting({
-      setting: 'vietvan-ca-flarum-levels.xp_per_post',
-      type: 'number',
-      label: safeTrans('vietvan-ca-flarum-levels.admin.settings.xp_per_post', 'XP per post'),
-      default: 10
-    })
-    .registerSetting({
-      setting: 'vietvan-ca-flarum-levels.xp_per_discussion',
-      type: 'number',
-      label: safeTrans('vietvan-ca-flarum-levels.admin.settings.xp_per_discussion', 'XP per discussion'),
-      default: 20
-    })
     .registerPermission(
       {
         icon: 'fas fa-chart-line',

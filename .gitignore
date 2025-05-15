@@ -1,5 +1,6 @@
 /vendor
 /js/node_modules
+/js/package-lock.json
 composer.lock
 /.idea
 /.vscode

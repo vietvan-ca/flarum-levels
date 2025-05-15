@@ -9,7 +9,7 @@ export default class LevelListItem extends Component {
     return (
       <tr className="LevelListItem">
         <td className="LevelListItem-name">
-          <span className="LevelName" style={level.attributes.color ? {color: level.attributes.color} : {}}>
+          <span className="LevelName">
             {level.attributes.name}
           </span>
         </td>
@@ -27,7 +27,7 @@ export default class LevelListItem extends Component {
           }
         </td>
         <td className="LevelListItem-order">
-          {level.attributes.display_order}
+          {level.attributes.order}
         </td>
         <td className="LevelListItem-actions">
           <Button 

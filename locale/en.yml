@@ -9,6 +9,7 @@ vietvan-ca-flarum-levels:
       manage_levels: Manage levels
     levels:
       title: User Levels
+      edit_title: Edit Levels
       help_text: Create and manage user levels. Higher XP requirements will define progression.
       name: Name
       description: Description
@@ -21,6 +22,7 @@ vietvan-ca-flarum-levels:
       add: Add Level
       delete_confirmation: Are you sure you want to delete this level? Users with this level will lose it.
       new_level: New Level
+      save: Save
     edit_user:
       title: Edit {username}'s Level
       current_xp: Current XP
