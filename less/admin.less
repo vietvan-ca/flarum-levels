@@ -1,0 +1,81 @@
+.LevelsPage {
+  &-header {
+    padding: 20px 0;
+    background: #fff;
+    margin-bottom: 20px;
+    
+    h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
+  &-helpText {
+    color: #666;
+  }
+  
+  &-body {
+    margin-bottom: 30px;
+  }
+}
+
+.LevelList {
+  &-header {
+    margin-bottom: 20px;
+  }
+  
+  &-empty {
+    padding: 50px 0;
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+  }
+}
+
+.LevelTable {
+  width: 100%;
+  border-collapse: collapse;
+  
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    border-top: 1px solid #ddd;
+    font-weight: bold;
+    background: #f9f9f9;
+  }
+}
+
+.LevelListItem {
+  &-name {
+    font-weight: bold;
+  }
+  
+  &-actions {
+    text-align: right;
+    white-space: nowrap;
+    
+    .Button {
+      margin-left: 5px;
+    }
+  }
+}
+
+.LevelColorDot {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  vertical-align: middle;
+}
+
+.EditLevelModal {
+  .Form-group {
+    margin-bottom: 15px;
+  }
+}
