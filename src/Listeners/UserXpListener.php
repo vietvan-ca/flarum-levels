@@ -15,11 +15,6 @@ class UserXpListener
         $post = $event->post;
         $user = $post->user;
         
-        // Skip if the post is not approved or if it's a private discussion
-        if (!$post->isApproved() || $post->discussion->is_private) {
-            return;
-        }
-        
         // Calculate XP to award - can be customized
         $xpToAward = 10;
         
