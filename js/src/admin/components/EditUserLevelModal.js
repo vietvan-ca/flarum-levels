@@ -180,6 +180,7 @@ export default class EditUserLevelModal extends Modal {
           }
         });
       }
+      m.redraw();
     }).then(() => {
       this.saving = false;
       app.modal.close();
@@ -196,5 +197,10 @@ export default class EditUserLevelModal extends Modal {
       m.redraw();
       throw error;
     });
+
+     // If on user list, refresh the list
+    if (app.current instanceof UserListPage) {
+      app.current.refresh();
+    }
   }
 }

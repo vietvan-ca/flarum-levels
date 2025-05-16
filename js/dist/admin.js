@@ -425,6 +425,7 @@ var EditUserLevelModal = /*#__PURE__*/function (_Modal) {
           }
         });
       }
+      m.redraw();
     }).then(function () {
       _this3.saving = false;
       flarum_admin_app__WEBPACK_IMPORTED_MODULE_2___default().modal.close();
@@ -443,6 +444,11 @@ var EditUserLevelModal = /*#__PURE__*/function (_Modal) {
       m.redraw();
       throw error;
     });
+
+    // If on user list, refresh the list
+    if ((flarum_admin_app__WEBPACK_IMPORTED_MODULE_2___default().current) instanceof UserListPage) {
+      flarum_admin_app__WEBPACK_IMPORTED_MODULE_2___default().current.refresh();
+    }
   };
   return EditUserLevelModal;
 }((flarum_common_components_Modal__WEBPACK_IMPORTED_MODULE_3___default()));
