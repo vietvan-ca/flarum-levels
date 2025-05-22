@@ -5,6 +5,7 @@ import PostUser from 'flarum/forum/components/PostUser';
 import Model from 'flarum/common/Model';
 import User from 'flarum/common/models/User';
 import UserLevelDisplay from './components/UserLevelDisplay';
+import icon from 'flarum/common/helpers/icon';
 
 app.initializers.add('vietvan-ca-levels', () => {
   // Add level attributes to User model
@@ -37,7 +38,8 @@ app.initializers.add('vietvan-ca-levels', () => {
         style={level.color ? {backgroundColor: level.color} : {}}
         title={level.description || ''}
       >
-        {level.name}
+        {level.icon && <span className="PostUser-level-icon">{icon(level.icon)}</span>}
+        <span className="PostUser-level-name"> {level.name}</span>
       </span>
     );
     

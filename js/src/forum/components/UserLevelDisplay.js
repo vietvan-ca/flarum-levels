@@ -15,9 +15,7 @@ export default class UserLevelDisplay extends Component {
       <div className="UserLevelDisplay">
         <div className="UserLevel-badge" style={{ backgroundColor: levelColor }}>
           {level.icon && icon(level.icon)}
-          <span className="UserLevel-name">
-            {app.translator.trans('vietvan-ca-flarum-levels.forum.user.level_badge', { name: level.name })}
-          </span>
+          <span className="UserLevel-name"> {app.translator.trans('vietvan-ca-flarum-levels.forum.user.level_badge', { name: level.name })}</span>
         </div>
       </div>
     );
